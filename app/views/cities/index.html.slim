@@ -1,6 +1,6 @@
-h1 Listing cities
+h1 城市
 
-table
+table class = "table"
   thead
     tr
       th Name
@@ -14,10 +14,10 @@ table
       tr
         td = city.name
         td = city.zone_id
-        td = link_to 'Show', city
-        td = link_to 'Edit', edit_city_path(city)
-        td = link_to 'Destroy', city, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = link_to 'Show', city, :class=>"btn btn-xs btn-default"
+        td = link_to 'Edit', edit_city_path(city), :class=>"btn btn-xs btn-default"
+        td = link_to 'Destroy', city, data: {:confirm => 'Are you sure?'}, :method => :delete, :class=>"btn btn-xs btn-danger"
 
 br
 
-= link_to 'New City', new_city_path
+= link_to 'New City', new_city_path, :class=>"btn btn-default"

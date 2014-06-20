@@ -1,6 +1,6 @@
 h1 Listing tournaments
 
-table
+table class="table"
   thead
     tr
       th Name
@@ -16,6 +16,7 @@ table
         td = tournament.name
         td = tournament.status
         td = tournament.team_count
+        td = tournament.city_id
         td = link_to 'Show', tournament
         td = link_to 'Edit', edit_tournament_path(tournament)
         td = link_to 'Destroy', tournament, data: {:confirm => 'Are you sure?'}, :method => :delete
