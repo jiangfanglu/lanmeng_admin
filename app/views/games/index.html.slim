@@ -1,0 +1,29 @@
+h1 Listing games
+
+table
+  thead
+    tr
+      th Team a
+      th Team b
+      th Referal
+      th Time
+      th Court
+      th
+      th
+      th
+
+  tbody
+    - @games.each do |game|
+      tr
+        td = game.team_a_id
+        td = game.team_b_id
+        td = game.referal_id
+        td = game.time
+        td = game.court_id
+        td = link_to 'Show', game
+        td = link_to 'Edit', edit_game_path(game)
+        td = link_to 'Destroy', game, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Game', new_game_path

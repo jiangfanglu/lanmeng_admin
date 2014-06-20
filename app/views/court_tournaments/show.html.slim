@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Court:
+  = @court_tournament.court_id
+p
+  strong Tournament:
+  = @court_tournament.tournament_id
+
+= link_to 'Edit', edit_court_tournament_path(@court_tournament)
+'|
+= link_to 'Back', court_tournaments_path

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @tournament.name
+p
+  strong Status:
+  = @tournament.status
+p
+  strong Team count:
+  = @tournament.team_count
+
+= link_to 'Edit', edit_tournament_path(@tournament)
+'|
+= link_to 'Back', tournaments_path

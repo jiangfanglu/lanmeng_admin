@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @court.name
+p
+  strong Location:
+  = @court.location
+p
+  strong Latitude:
+  = @court.latitude
+p
+  strong Longitude:
+  = @court.longitude
+
+= link_to 'Edit', edit_court_path(@court)
+'|
+= link_to 'Back', courts_path

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Team a:
+  = @game.team_a_id
+p
+  strong Team b:
+  = @game.team_b_id
+p
+  strong Referal:
+  = @game.referal_id
+p
+  strong Time:
+  = @game.time
+p
+  strong Court:
+  = @game.court_id
+
+= link_to 'Edit', edit_game_path(@game)
+'|
+= link_to 'Back', games_path

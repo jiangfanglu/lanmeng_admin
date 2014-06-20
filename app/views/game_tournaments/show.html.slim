@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Game:
+  = @game_tournament.game_id
+p
+  strong Tournament:
+  = @game_tournament.tournament_id
+
+= link_to 'Edit', edit_game_tournament_path(@game_tournament)
+'|
+= link_to 'Back', game_tournaments_path

@@ -1,0 +1,23 @@
+h1 Listing court_tournaments
+
+table
+  thead
+    tr
+      th Court
+      th Tournament
+      th
+      th
+      th
+
+  tbody
+    - @court_tournaments.each do |court_tournament|
+      tr
+        td = court_tournament.court_id
+        td = court_tournament.tournament_id
+        td = link_to 'Show', court_tournament
+        td = link_to 'Edit', edit_court_tournament_path(court_tournament)
+        td = link_to 'Destroy', court_tournament, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Court tournament', new_court_tournament_path

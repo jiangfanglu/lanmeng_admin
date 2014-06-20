@@ -1,0 +1,27 @@
+h1 Listing courts
+
+table
+  thead
+    tr
+      th Name
+      th Location
+      th Latitude
+      th Longitude
+      th
+      th
+      th
+
+  tbody
+    - @courts.each do |court|
+      tr
+        td = court.name
+        td = court.location
+        td = court.latitude
+        td = court.longitude
+        td = link_to 'Show', court
+        td = link_to 'Edit', edit_court_path(court)
+        td = link_to 'Destroy', court, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Court', new_court_path

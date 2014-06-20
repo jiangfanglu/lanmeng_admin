@@ -1,0 +1,24 @@
+= form_for @game do |f|
+  - if @game.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@game.errors.count, "error")} prohibited this game from being saved:"
+      ul
+        - @game.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :team_a_id
+    = f.number_field :team_a_id
+  .field
+    = f.label :team_b_id
+    = f.number_field :team_b_id
+  .field
+    = f.label :referal_id
+    = f.number_field :referal_id
+  .field
+    = f.label :time
+    = f.datetime_select :time
+  .field
+    = f.label :court_id
+    = f.number_field :court_id
+  .actions = f.submit 'Save'
