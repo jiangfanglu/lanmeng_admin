@@ -25,7 +25,7 @@ class CourtsController < ApplicationController
   # GET /courts/new.json
   def new
     @court = Court.new
-
+    @tournaments = Tournament.includes(:city).order("cities.name asc").all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @court }
@@ -44,6 +44,13 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
+
+        @court_tournament = CourtTournament.new(
+            court_id: @court.id,
+            tournament_id: params[:post][:tournament_id].to_i
+          )
+        @court_tournament.save
+
         format.html { redirect_to @court, notice: 'Court was successfully created.' }
         format.json { render json: @court, status: :created, location: @court }
       else

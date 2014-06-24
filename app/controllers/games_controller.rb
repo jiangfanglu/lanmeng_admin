@@ -59,6 +59,14 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+
+        @game_tournament = GameTournament.new(
+            game_id: @game.id, 
+            tournament_id: params[:post][:tournament_id].to_i
+          )
+
+        @game_tournament.save
+
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else

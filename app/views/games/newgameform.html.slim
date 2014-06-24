@@ -24,6 +24,9 @@ br
   .field
     = f.label '场地'
     == select("game", "court_id", @tournament.courts.collect {|t| [ t.name, t.id ] }, {},{:class => 'form-control',:id=>'game_court_id'})
+  .field
+    = hidden_field("post", "tournament_id", :value=> params[:id]) 
+
 
     
   .actions = f.submit '保存', :class=>"btn btn-default"

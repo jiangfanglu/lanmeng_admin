@@ -8,14 +8,21 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
   .field
     = f.label :location
-    = f.text_field :location
+    = f.text_field :location, class: 'form-control'
   .field
     = f.label :latitude
-    = f.text_field :latitude
+    = f.text_field :latitude, class: 'form-control'
   .field
     = f.label :longitude
-    = f.text_field :longitude
-  .actions = f.submit 'Save'
+    = f.text_field :longitude, class: 'form-control'
+
+  - if params[:action] == "new"
+    .field
+      == select("post", "tournament_id", @tournaments.collect {|t| [ "#{t.city.name}#{t.name}", t.id ] }, {include_blank: '选择赛区', :default=>0},{:class => 'form-control',:id=>'post_tournament_id'})
+
+
+
+  .actions = f.submit '保存', class: 'btn btn-default'
