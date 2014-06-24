@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Captain player:
+  = @team.captain_player_id
+p
+  strong Description:
+  = @team.description
+p
+  strong Logo:
+  = @team.logo
+p
+  strong Member count:
+  = @team.member_count
+p
+  strong Name:
+  = @team.name
+
+= link_to 'Edit', edit_team_path(@team)
+'|
+= link_to 'Back', teams_path

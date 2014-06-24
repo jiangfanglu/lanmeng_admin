@@ -1,4 +1,10 @@
 LanmengAdmin::Application.routes.draw do
+  resources :referees
+
+
+  resources :teams
+
+
   get "home/index"
 
   resources :user_groups

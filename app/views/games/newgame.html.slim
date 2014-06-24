@@ -1,0 +1,19 @@
+div class="page-header"
+	h4 新建比赛
+
+== select("game", "tournament_id", @tournaments.collect {|t| [ "#{t.city.name}#{t.name}", t.id ] }, {include_blank: '选择赛区', :default=>0},{:class => 'form-control',:id=>'game_tournament_id'})
+
+div class="row"
+	div class="col-lg-12" id="newgameform"
+
+javascript:
+	$("#game_tournament_id").change(function(){
+		$.ajax({
+		  url: "/games/newgameform/"+$(this).val(),
+		  cache: false
+		}).done(function( html ) {
+			$("#newgameform").html(html);
+		});
+	});
+
+

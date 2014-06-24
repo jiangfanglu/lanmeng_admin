@@ -1,0 +1,33 @@
+h1 Listing referees
+
+table
+  thead
+    tr
+      th Game count
+      th Name
+      th Rating
+      th Rating count
+      th Status
+      th User
+      th Tournament
+      th
+      th
+      th
+
+  tbody
+    - @referees.each do |referee|
+      tr
+        td = referee.game_count
+        td = referee.name
+        td = referee.rating
+        td = referee.rating_count
+        td = referee.status
+        td = referee.user_id
+        td = referee.tournament_id
+        td = link_to 'Show', referee
+        td = link_to 'Edit', edit_referee_path(referee)
+        td = link_to 'Destroy', referee, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Referee', new_referee_path

@@ -1,0 +1,30 @@
+br
+br
+
+= form_for @game do |f|
+  - if @game.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@game.errors.count, "error")} prohibited this game from being saved:"
+      ul
+        - @game.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label '队伍一'
+    == select("game", "team_a_id", @tournament.teams.collect {|t| [ t.name, t.id ] }, {},{:class => 'form-control',:id=>'game_team_a_id'})
+  .field
+    = f.label '队伍二'
+    == select("game", "team_b_id", @tournament.teams.collect {|t| [ t.name, t.id ] }, {},{:class => 'form-control',:id=>'game_team_b_id'})
+  .field
+    = f.label '裁判'
+    == select("game", "referal_id", @tournament.referees.collect {|t| [ t.name, t.id ] }, {},{:class => 'form-control',:id=>'game_referal_id'})
+  .field
+    = f.label '比赛时间'
+    = f.datetime_select :time
+  .field
+    = f.label '场地'
+    == select("game", "court_id", @tournament.courts.collect {|t| [ t.name, t.id ] }, {},{:class => 'form-control',:id=>'game_court_id'})
+
+    
+  .actions = f.submit '保存', :class=>"btn btn-default"
+

@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Game count:
+  = @referee.game_count
+p
+  strong Name:
+  = @referee.name
+p
+  strong Rating:
+  = @referee.rating
+p
+  strong Rating count:
+  = @referee.rating_count
+p
+  strong Status:
+  = @referee.status
+p
+  strong User:
+  = @referee.user_id
+p
+  strong Tournament:
+  = @referee.tournament_id
+
+= link_to 'Edit', edit_referee_path(@referee)
+'|
+= link_to 'Back', referees_path

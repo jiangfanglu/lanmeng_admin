@@ -8,14 +8,31 @@
 
   .field
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, :class=>"form-control"
   .field
     = f.label :content
-    = f.text_area :content
+    = f.text_area :content, :class=>"form-control",:rows=>5
   .field
-    = f.label :user_id
-    = f.number_field :user_id
+    = f.hidden_field :user_id, :value=>0
   .field
     = f.label :blog_type
-    = f.number_field :blog_type
-  .actions = f.submit 'Save'
+    br
+    select name="weblog[blog_type]" id="weblog_blog_type"
+      option value="G"
+        | 全站公告
+      option value="Z"
+        | 赛区公告
+  .field
+    br
+    == select("weblog", "tournament_id", @tournaments.collect {|t| [ "#{t.city.name}#{t.name}", t.id ] }, {include_blank: '选择赛区', :default=>0},{:class => 'hide',:id=>'weblog_tournament_id'})
+
+  .actions = f.submit '发布', :class=>"btn btn-default"
+
+  javascript:
+    $("#weblog_blog_type").change(function(){
+      if($(this).val()=="Z"){
+        $("#weblog_tournament_id").removeClass("hide");
+      }else{
+        $("#weblog_tournament_id").addClass("hide");
+      }
+    });

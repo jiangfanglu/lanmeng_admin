@@ -32,6 +32,21 @@ class GamesController < ApplicationController
     end
   end
 
+  def newgame
+    @tournaments = Tournament.includes(:city).order("cities.name asc").all
+  end
+
+  def newgameform
+    @game = Game.new
+
+    @tournament = Tournament.includes(:referees).includes(:courts).includes(:teams).find params[:id]
+
+    respond_to do |format|
+      format.html { render layout: false }
+      format.json { render json: @game }
+    end
+  end
+
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])

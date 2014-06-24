@@ -26,6 +26,8 @@ class WeblogsController < ApplicationController
   def new
     @weblog = Weblog.new
 
+    @tournaments = Tournament.includes(:city).all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @weblog }
