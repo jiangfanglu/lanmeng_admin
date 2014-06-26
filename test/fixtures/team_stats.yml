@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lose: 1
+  team_id: 1
+  win: 1
+
+two:
+  lose: 1
+  team_id: 1
+  win: 1

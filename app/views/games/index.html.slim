@@ -1,13 +1,14 @@
-h1 Listing games
+h1 比赛列表
 
-table
+table class="table"
   thead
     tr
-      th Team a
-      th Team b
-      th Referal
-      th Time
-      th Court
+      th 队伍一
+      th 队伍二
+      th 裁判
+      th 时间
+      th 场地
+      th
       th
       th
       th
@@ -15,15 +16,19 @@ table
   tbody
     - @games.each do |game|
       tr
-        td = game.team_a_id
-        td = game.team_b_id
-        td = game.referal_id
-        td = game.time
-        td = game.court_id
-        td = link_to 'Show', game
-        td = link_to 'Edit', edit_game_path(game)
-        td = link_to 'Destroy', game, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = game.team_a.name
+        td = game.team_b.name
+        td = game.referee.name
+        td = game.time.strftime("%Y-%m-%d %H:%M")
+        td = game.court.name
+        td = link_to '查看', game, {:class=>"btn btn-xs btn-default"}
+        td = link_to '修改', edit_game_path(game), {:class=>"btn btn-xs btn-default"}
+        //td = link_to 'Destroy', game, data: {:confirm => 'Are you sure?'}, :method => :delete
+        - if game.stat_enterred?
+          td = link_to '查看比赛数据', {action: 'viewstats', id: game.id}, {:class=>"btn btn-xs btn-success"}
+        - else
+          td = link_to '录入比赛数据', {action: 'stats', id: game.id}, {:class=>"btn btn-xs btn-default"}
 
 br
 
-= link_to 'New Game', action: "newgame", id: 0
+= link_to '创建比赛', {action: "newgame", id: 0},{:class=>"btn btn-default"}

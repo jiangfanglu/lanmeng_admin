@@ -1,0 +1,91 @@
+div class="page-header"
+	h4 比分
+
+div class="row" style="padding:10px;"
+	div class="col-lg-6"
+		h4
+			= @game.team_a.name
+		= @game.game_stats[0].score
+	div class="col-lg-6"
+		h4
+			= @game.team_b.name
+		= @game.game_stats[1].score
+
+div class="page-header"
+	h4 球员数据
+
+div class="panel panel-default"
+	div class="panel-heading"
+			h4 class="panel-title"
+				= @game.team_a.name
+	div class="panel-content" style="padding:10px;"
+		table class="table"
+			tr
+				th 球员号码
+				th 球员姓名
+				th 得分
+				th 篮板
+				th 助攻
+				th 盖帽
+				th 抢断
+				th 灌篮
+			- @game.team_a.players.each do |player|
+
+				tr
+					td 
+						= player.number
+					td = player.alias
+					td 
+						input type="text" name='team[score][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[assist][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[rebound][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[steal][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[dunk][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[block][]' value="0" class="form-control input-sm stat"
+
+div class="panel panel-default"
+	div class="panel-heading"
+			h4 class="panel-title"
+				= @game.team_b.name
+	div class="panel-content" style="padding:10px;"
+		table class="table"
+			tr
+				th 球员号码
+				th 球员姓名
+				th 得分
+				th 篮板
+				th 助攻
+				th 盖帽
+				th 抢断
+				th 灌篮
+			- @game.team_b.players.each do |player|
+
+				tr
+					td 
+						= player.number
+						input type="hidden" name="team[player_id][]" value="#{player.id}"
+					td = player.alias
+					td 
+						input type="text" name='team[score][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[assist][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[rebound][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[steal][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[dunk][]' value="0" class="form-control input-sm stat"
+					td 
+						input type="text" name='team[block][]' value="0" class="form-control input-sm stat"
+
+
+
+
+
+
+
