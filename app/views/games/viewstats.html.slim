@@ -29,24 +29,17 @@ div class="panel panel-default"
 				th 盖帽
 				th 抢断
 				th 灌篮
-			- @game.team_a.players.each do |player|
+			- @player_game_stats_team_a.each do |player_stat|
 
 				tr
-					td 
-						= player.number
-					td = player.alias
-					td 
-						input type="text" name='team[score][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[assist][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[rebound][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[steal][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[dunk][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[block][]' value="0" class="form-control input-sm stat"
+					td = player_stat.player.number
+					td = player_stat.player.alias
+					td = player_stat.score
+					td = player_stat.assist
+					td = player_stat.rebound
+					td = player_stat.steal
+					td = player_stat.dunk
+					td = player_stat.block
 
 div class="panel panel-default"
 	div class="panel-heading"
@@ -63,25 +56,17 @@ div class="panel panel-default"
 				th 盖帽
 				th 抢断
 				th 灌篮
-			- @game.team_b.players.each do |player|
+			- @player_game_stats_team_b.each do |player_stat|
 
 				tr
-					td 
-						= player.number
-						input type="hidden" name="team[player_id][]" value="#{player.id}"
-					td = player.alias
-					td 
-						input type="text" name='team[score][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[assist][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[rebound][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[steal][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[dunk][]' value="0" class="form-control input-sm stat"
-					td 
-						input type="text" name='team[block][]' value="0" class="form-control input-sm stat"
+					td = player_stat.player.number
+					td = player_stat.player.alias
+					td = player_stat.score
+					td = player_stat.assist
+					td = player_stat.rebound
+					td = player_stat.steal
+					td = player_stat.dunk
+					td = player_stat.block
 
 
 

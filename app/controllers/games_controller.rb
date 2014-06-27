@@ -111,7 +111,12 @@ class GamesController < ApplicationController
   def viewstats
     @game = Game.find params[:id]
 
-    @player_game_stats = PlayerGameStat.where()
+    @team_a_player_ids = @game.team_a.players.collect{|p|p.id}
+    @team_b_player_ids = @game.team_b.players.collect{|p|p.id}
+
+    @player_game_stats_team_a = PlayerGameStat.includes(:player).where("game_id = ? and player_id in (?)", @game.id, @team_a_player_ids)
+    @player_game_stats_team_b = PlayerGameStat.includes(:player).where("game_id = ? and player_id in (?)", @game.id, @team_b_player_ids)
+  
   end
 
   def addgamestats
